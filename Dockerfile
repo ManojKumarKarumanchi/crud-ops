@@ -35,7 +35,6 @@ COPY main.py .
 COPY app/ ./app/
 
 # Copy utility scripts (optional - for manual DB operations)
-COPY reset_db.py .
 COPY seed_database.py .
 
 # Create non-root user for security
