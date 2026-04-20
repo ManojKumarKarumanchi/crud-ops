@@ -1,0 +1,83 @@
+2026-04-20 15:09:12 - app.routes.v1.auth - INFO - Registration attempt: Manoj@example.com
+2026-04-20 15:09:12 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\ManojKumarKarumanchi\local\crud\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-04-20 15:09:13 - app.services.user_service - INFO - User created: Manoj@example.com
+2026-04-20 15:09:33 - app.routes.v1.auth - INFO - Login attempt: Manoj@example.com
+2026-04-20 15:09:34 - app.services.user_service - INFO - User authenticated: Manoj@example.com
+2026-04-20 15:09:34 - app.routes.v1.auth - INFO - Login successful: Manoj@example.com
+2026-04-20 15:09:40 - app.routes.v1.users - INFO - User info requested: Manoj@example.com
+2026-04-20 15:09:47 - app.routes.v1.items - INFO - Items list requested by Manoj@example.com
+2026-04-20 15:09:47 - app.services.item_service - INFO - Retrieved 0 items
+2026-04-20 15:10:27 - app.routes.v1.items - INFO - Item creation requested by Manoj@example.com
+2026-04-20 15:10:27 - app.services.item_service - INFO - Item created: Table (ID: 0a2c9a8e-df8f-4c35-8539-7aae1215c7db)
+2026-04-20 15:10:48 - app.routes.v1.items - INFO - Item 3fa85f64-5717-4562-b3fc-2c963f66afa6 requested by Manoj@example.com
+2026-04-20 15:11:02 - app.routes.v1.items - INFO - Item 3fa85f64-5717-4562-b3fc-2c963f66afa6 requested by Manoj@example.com
+2026-04-20 15:11:40 - app.routes.v1.items - INFO - Item 0a2c9a8e-df8f-4c35-8539-7aae1215c7db requested by Manoj@example.com
+2026-04-20 15:12:00 - app.routes.v1.items - INFO - Item 0a2c9a8e-df8f-4c35-8539-7aae1215c7db update requested by Manoj@example.com
+2026-04-20 15:12:00 - app.services.item_service - INFO - Item updated: string (ID: 0a2c9a8e-df8f-4c35-8539-7aae1215c7db)
+2026-04-20 15:12:13 - app.routes.v1.items - INFO - Item 0a2c9a8e-df8f-4c35-8539-7aae1215c7db deletion requested by Manoj@example.com
+2026-04-20 15:12:13 - app.services.item_service - INFO - Item deleted: ID 0a2c9a8e-df8f-4c35-8539-7aae1215c7db
+2026-04-20 15:12:25 - app.routes.v1.items - INFO - Item 0a2c9a8e-df8f-4c35-8539-7aae1215c7db deletion requested by Manoj@example.com
+2026-04-20 15:12:25 - app.services.item_service - WARNING - Delete failed: item 0a2c9a8e-df8f-4c35-8539-7aae1215c7db not found
+2026-04-20 15:13:19 - app.routes.v1.items - INFO - Item 0a2c9a8e-df8f-4c35-8539-7aae1215c7db deletion requested by Manoj@example.com
+2026-04-20 15:13:19 - app.services.item_service - WARNING - Delete failed: item 0a2c9a8e-df8f-4c35-8539-7aae1215c7db not found
+2026-04-20 15:13:47 - app.routes.v1.items - INFO - Items list requested by Manoj@example.com
+2026-04-20 15:13:47 - app.services.item_service - INFO - Retrieved 0 items
+2026-04-20 15:13:56 - app.routes.v1.items - INFO - Item creation requested by Manoj@example.com
+2026-04-20 15:13:56 - app.services.item_service - INFO - Item created: Table (ID: 79a5df89-f656-4e5e-b67d-4df976fed0a9)
+2026-04-20 15:14:25 - app.routes.v1.items - INFO - Item 79a5df89-f656-4e5e-b67d-4df976fed0a9 requested by Manoj@example.com
+2026-04-20 15:14:40 - app.routes.v1.items - INFO - Item 79a5df89-f656-4e5e-b67d-4df976fed0a9 deletion requested by Manoj@example.com
+2026-04-20 15:14:40 - app.services.item_service - INFO - Item deleted: ID 79a5df89-f656-4e5e-b67d-4df976fed0a9
+2026-04-20 16:05:50 - app.routes.v1.auth - INFO - Login attempt: admin
+2026-04-20 16:05:50 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\ManojKumarKarumanchi\local\crud\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-04-20 16:05:50 - app.services.user_service - INFO - User authenticated: admin
+2026-04-20 16:05:50 - app.routes.v1.auth - INFO - Login successful: admin
+2026-04-20 16:06:00 - app.routes.v1.admin - INFO - Admin admin requested user statistics
+2026-04-20 16:06:05 - app.routes.v1.auth - INFO - Login attempt: gillsylvia@example.org
+2026-04-20 16:06:05 - app.services.user_service - INFO - User authenticated: gillsylvia@example.org
+2026-04-20 16:06:05 - app.routes.v1.auth - INFO - Login successful: gillsylvia@example.org
+2026-04-20 16:06:16 - app.routes.v1.admin - INFO - Admin admin requested user list
+2026-04-20 16:06:16 - app.routes.v1.admin - INFO - Retrieved 3 users for admin dashboard
+2026-04-20 16:06:21 - app.routes.v1.admin - INFO - Admin admin requested item list
+2026-04-20 16:06:21 - app.routes.v1.admin - INFO - Retrieved 6 items for admin dashboard
+2026-04-20 16:06:22 - app.routes.v1.admin - INFO - Admin admin requested dashboard summary
+2026-04-20 16:08:20 - app.routes.v1.auth - INFO - Login attempt: admin
+2026-04-20 16:08:20 - app.services.user_service - INFO - User authenticated: admin
+2026-04-20 16:08:20 - app.routes.v1.auth - INFO - Login successful: admin
+2026-04-20 16:08:34 - app.routes.v1.auth - INFO - Login attempt: admin
+2026-04-20 16:08:34 - app.services.user_service - INFO - User authenticated: admin
+2026-04-20 16:08:34 - app.routes.v1.auth - INFO - Login successful: admin
+2026-04-20 16:08:36 - app.routes.v1.admin - INFO - Admin admin requested dashboard summary
+2026-04-20 16:08:38 - app.routes.v1.admin - INFO - Admin admin requested user statistics
+2026-04-20 16:08:40 - app.routes.v1.auth - INFO - Login attempt: gillsylvia@example.org
+2026-04-20 16:08:41 - app.services.user_service - INFO - User authenticated: gillsylvia@example.org
+2026-04-20 16:08:41 - app.routes.v1.auth - INFO - Login successful: gillsylvia@example.org
+2026-04-20 16:11:35 - app.routes.v1.auth - INFO - Login attempt: admin
+2026-04-20 16:11:35 - app.services.user_service - WARNING - Login failed: user admin not found
+2026-04-20 16:11:42 - app.routes.v1.auth - INFO - Login attempt: admin
+2026-04-20 16:11:43 - app.services.user_service - WARNING - Login failed: invalid password for admin
+2026-04-20 16:13:23 - app.routes.v1.auth - INFO - Login attempt: admin
+2026-04-20 16:13:23 - app.services.user_service - INFO - User authenticated: admin
+2026-04-20 16:13:23 - app.routes.v1.auth - INFO - Login successful: admin
+2026-04-20 16:13:24 - app.routes.v1.admin - INFO - Admin admin requested item list
+2026-04-20 16:13:24 - app.routes.v1.admin - INFO - Retrieved 6 items for admin dashboard
+2026-04-20 16:16:13 - app.routes.v1.auth - INFO - Login attempt: admin
+2026-04-20 16:16:14 - app.services.user_service - INFO - User authenticated: admin
+2026-04-20 16:16:14 - app.routes.v1.auth - INFO - Login successful: admin
+2026-04-20 16:16:23 - app.routes.v1.admin - INFO - Admin admin requested user list
+2026-04-20 16:16:23 - app.routes.v1.admin - INFO - Retrieved 7 users for admin dashboard
+2026-04-20 16:16:51 - app.routes.v1.auth - INFO - Registration attempt: Manoj@example.com
+2026-04-20 16:16:52 - app.services.user_service - INFO - User created: Manoj@example.com
+2026-04-20 16:21:05 - app.routes.v1.auth - INFO - Login attempt: admin
+2026-04-20 16:21:05 - app.services.user_service - INFO - User authenticated: admin
+2026-04-20 16:21:05 - app.routes.v1.auth - INFO - Login successful: admin
+2026-04-20 16:21:08 - app.routes.v1.admin - INFO - Admin admin requested dashboard summary
