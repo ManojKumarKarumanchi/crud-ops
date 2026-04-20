@@ -45,6 +45,11 @@ async def get_db():
 
 
 async def init_db():
-    """Create all tables in the database."""
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
+    """Create all tables in the database (idempotent)."""
+    from sqlalchemy.exc import IntegrityError, ProgrammingError
+    try:
+        async with engine.begin() as conn:
+            await conn.run_sync(Base.metadata.create_all)
+    except (IntegrityError, ProgrammingError):
+        # Tables already exist - this is fine on redeployments
+        pass

@@ -25,10 +25,6 @@
 
 ---
 
-## 🎯 About
-
-This project is a **FastAPI-based backend application** built as an interview exercise for a Founding Backend Engineer position at **MindAbs**. It demonstrates best practices in API development, authentication, database design, and production-ready code structure.
-
 **Exercise Requirements:**
 - ✅ Authenticated CRUD APIs with JWT
 - ✅ Relational database with proper schema (6 tables/6 columns)
@@ -37,7 +33,7 @@ This project is a **FastAPI-based backend application** built as an interview ex
 - ✅ Cloud deployment ready
 - ✅ Comprehensive documentation
 
-**Completed By:** April 22, 2024
+**Completed By:** April 22, 2026
 
 ---
 
@@ -588,8 +584,8 @@ Content-Type: application/json
   "email": "user@example.com",
   "full_name": "John Doe",
   "is_active": true,
-  "created_at": "2024-04-20T10:00:00",
-  "updated_at": "2024-04-20T10:00:00"
+  "created_at": "2026-04-20T10:00:00",
+  "updated_at": "2026-04-20T10:00:00"
 }
 ```
 
@@ -640,8 +636,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
   "email": "user@example.com",
   "full_name": "John Doe",
   "is_active": true,
-  "created_at": "2024-04-20T10:00:00",
-  "updated_at": "2024-04-20T10:00:00"
+  "created_at": "2026-04-20T10:00:00",
+  "updated_at": "2026-04-20T10:00:00"
 }
 ```
 
@@ -666,8 +662,8 @@ Authorization: Bearer <token>
     "price": 1000,
     "category": "Electronics",
     "is_available": true,
-    "created_at": "2024-04-20T10:00:00",
-    "updated_at": "2024-04-20T10:00:00"
+    "created_at": "2026-04-20T10:00:00",
+    "updated_at": "2026-04-20T10:00:00"
   }
 ]
 ```
@@ -704,8 +700,8 @@ Content-Type: application/json
   "price": 2999,
   "category": "Electronics",
   "is_available": true,
-  "created_at": "2024-04-20T10:00:00",
-  "updated_at": "2024-04-20T10:00:00"
+  "created_at": "2026-04-20T10:00:00",
+  "updated_at": "2026-04-20T10:00:00"
 }
 ```
 
@@ -733,8 +729,8 @@ Content-Type: application/json
   "price": 3499,
   "category": "Electronics",
   "is_available": true,
-  "created_at": "2024-04-20T10:00:00",
-  "updated_at": "2024-04-20T11:30:00"
+  "created_at": "2026-04-20T10:00:00",
+  "updated_at": "2026-04-20T11:30:00"
 }
 ```
 
@@ -795,7 +791,7 @@ Authorization: Bearer <admin-token>
       "full_name": "Recent User",
       "is_active": true,
       "is_admin": false,
-      "created_at": "2024-04-20T15:30:00"
+      "created_at": "2026-04-20T15:30:00"
     }
   ],
   "recent_items": [
@@ -805,7 +801,7 @@ Authorization: Bearer <admin-token>
       "category": "Electronics",
       "price": 29999,
       "is_available": true,
-      "created_at": "2024-04-20T15:00:00"
+      "created_at": "2026-04-20T15:00:00"
     }
   ]
 }
@@ -831,8 +827,8 @@ Authorization: Bearer <admin-token>
     "full_name": "John Doe",
     "is_active": true,
     "is_admin": false,
-    "created_at": "2024-04-20T10:00:00",
-    "updated_at": "2024-04-20T10:00:00"
+    "created_at": "2026-04-20T10:00:00",
+    "updated_at": "2026-04-20T10:00:00"
   }
 ]
 ```
@@ -877,8 +873,8 @@ Authorization: Bearer <admin-token>
     "price": 129999,
     "category": "Electronics",
     "is_available": true,
-    "created_at": "2024-04-20T10:00:00",
-    "updated_at": "2024-04-20T10:00:00"
+    "created_at": "2026-04-20T10:00:00",
+    "updated_at": "2026-04-20T10:00:00"
   }
 ]
 ```
@@ -1106,188 +1102,6 @@ response = requests.get(f"{BASE_URL}/v1/admin/users/count", headers=headers)
 print("Regular user accessing admin endpoint:", response.status_code, response.json())
 ```
 
----
-
-## 🧪 Testing
-
-### Automated Tests
-
-```bash
-# Test database connection
-python test_db_connection.py
-
-# Simple connection test
-python test_db_simple.py
-
-# Test admin dashboard functionality
-python test_admin.py
-```
-
-**Admin Test Output:**
-```
-============================================================
-TESTING ADMIN DASHBOARD
-============================================================
-
-[TEST 1] Admin Login
-[OK] Admin login successful
-
-[TEST 2] Admin Access Dashboard
-[OK] Admin dashboard access granted
-  - Total users: 8
-  - Total items: 6
-
-[TEST 3] Admin Access User Count
-[OK] Admin user count access granted
-  - Total: 8, Active: 7, Admins: 1
-
-[TEST 4] Regular User Login
-[OK] Regular user login successful
-
-[TEST 5] Regular User Access Admin Endpoint (Expect 403)
-[OK] Regular user correctly blocked (403 Forbidden)
-  - Message: Admin access required. Only administrators can access this resource.
-
-============================================================
-ADMIN DASHBOARD TEST COMPLETE
-============================================================
-```
-
-### Manual Testing Checklist
-
-**Prerequisites:**
-- [ ] PostgreSQL running and accessible
-- [ ] Application started successfully
-- [ ] No errors in logs
-
-**Database Tests:**
-- [ ] Connection successful
-- [ ] Tables created automatically
-- [ ] Can insert/query data
-
-**Authentication Tests:**
-- [ ] Can register new user
-- [ ] Email validation works
-- [ ] Password validation (8-72 chars)
-- [ ] Duplicate email rejected
-- [ ] Login returns JWT token
-- [ ] Invalid credentials rejected
-- [ ] Token expires after 30 minutes
-- [ ] Admin login works (admin / adminpass123)
-- [ ] Admin token includes same structure as regular token
-
-**API Tests:**
-- [ ] Unauthenticated requests rejected (401)
-- [ ] Valid token accepted
-- [ ] Expired token rejected
-- [ ] Can retrieve current user profile
-- [ ] Profile excludes password
-
-**CRUD Tests:**
-- [ ] Create item with valid data
-- [ ] List items with pagination
-- [ ] Get single item by UUID
-- [ ] Update item (partial update works)
-- [ ] Delete item
-- [ ] UUID validation on endpoints
-- [ ] 404 for non-existent items
-
-**Admin Authorization Tests:**
-- [ ] Admin can access dashboard endpoint
-- [ ] Admin can list all users
-- [ ] Admin can get user statistics
-- [ ] Admin can list all items
-- [ ] Admin can get item statistics
-- [ ] Regular user gets 403 on admin endpoints
-- [ ] Admin endpoints reject unauthenticated requests (401)
-- [ ] Admin dashboard shows accurate statistics
-
-**Data Integrity:**
-- [ ] `created_at` set on insert
-- [ ] `updated_at` auto-updates on modification
-- [ ] UUID format validated
-- [ ] Price validation (>= 0)
-- [ ] `is_admin` flag defaults to false for new users
-- [ ] Admin user has `is_admin=true` in database
-
-**Logging:**
-- [ ] Logs written to console
-- [ ] Logs written to `app.log`
-- [ ] Authentication events logged
-- [ ] Errors logged with tracebacks
-
-### Docker Testing
-
-```bash
-# Start services
-docker-compose up -d
-
-# Wait for healthy status (check health checks)
-docker-compose ps
-
-# Seed test data
-docker-compose exec api python seed_database.py
-
-# Test API
-curl http://localhost:8000/health
-curl http://localhost:8000/docs
-
-# Login as admin
-curl -X POST http://localhost:8000/v1/auth/login \
-  -d "username=admin&password=adminpass123"
-
-# Test admin dashboard (use token from above)
-curl http://localhost:8000/v1/admin/dashboard \
-  -H "Authorization: Bearer <token>"
-
-# Run admin tests
-docker-compose exec api python test_admin.py
-```
-
-### Load Testing (Optional)
-
-```bash
-# Install locust
-pip install locust
-
-# Run load test
-locust -f locustfile.py --host=http://localhost:8000
-```
-
----
-
-## 🚢 Production Deployment
-
-### Pre-Deployment Checklist
-
-**Security:**
-- [ ] Generate strong SECRET_KEY (64+ chars)
-- [ ] Set DEBUG=False
-- [ ] Configure CORS for specific origins
-- [ ] Use HTTPS/TLS certificates
-- [ ] Enable rate limiting
-- [ ] Set up WAF (Web Application Firewall)
-
-**Database:**
-- [ ] Use managed PostgreSQL service
-- [ ] Enable SSL/TLS connection
-- [ ] Set up connection pooling
-- [ ] Configure automated backups
-- [ ] Set up monitoring/alerts
-
-**Application:**
-- [ ] Configure multiple workers (CPU cores)
-- [ ] Set up reverse proxy (nginx/caddy)
-- [ ] Configure process manager (systemd/supervisor)
-- [ ] Set up log aggregation
-- [ ] Configure health checks
-
-**Monitoring:**
-- [ ] Application metrics (Prometheus/Grafana)
-- [ ] Error tracking (Sentry)
-- [ ] Uptime monitoring
-- [ ] Database metrics
-- [ ] Log analysis
 
 ### Production Environment Variables
 
@@ -1825,14 +1639,6 @@ CREATE INDEX idx_items_id ON items(id);
 
 ---
 
-## 🎓 Learning Resources
-
-### Interview Exercise Context
-- **Position**: Founding Backend Engineer
-- **Company**: MindAbs (Day 1 startup - Human Intelligence Enhancement)
-- **Deadline**: April 22, 2024 EOD
-- **Requirements**: Authenticated CRUD APIs with cloud deployment
-
 ### Reference Materials
 - [FastAPI Official Documentation](https://fastapi.tiangolo.com/)
 - [SQLAlchemy Async Guide](https://docs.sqlalchemy.org/en/20/orm/extensions/asyncio.html)
@@ -1856,33 +1662,10 @@ This is an interview exercise project. Contributions are not currently accepted.
 
 ---
 
-## 📝 License
-
-This project is built as part of an interview process. All rights reserved by the author.
-
----
-
 ## 👤 Author
-
 **Manoj Kumar Karumanchi**
-- **Role**: Backend Engineer Candidate
-- **Position**: Founding Backend Engineer
-- **Company**: MindAbs
-- **Date**: April 2024
-- **Exercise**: Authenticated CRUD API with JWT
 
 ---
-
-## 🙏 Acknowledgments
-
-- FastAPI team for excellent documentation
-- PostgreSQL community
-- MindAbs for the opportunity
-- Anthropic's Claude for development assistance
-
----
-
-## 📞 Support & Troubleshooting
 
 ### Common Issues
 
@@ -1948,7 +1731,7 @@ sudo tail -f /var/log/postgresql/postgresql-15-main.log
 
 ## 🔄 Version History
 
-### v1.0.0 (April 20, 2024)
+### v1.0.0 (April 20, 2026)
 **Initial Release - Interview Exercise**
 
 **Features:**
@@ -1990,47 +1773,3 @@ sudo tail -f /var/log/postgresql/postgresql-15-main.log
 - ✅ Connection recycling (30 min)
 - ✅ Pre-ping for stale connections
 - ✅ Rotating log files (10MB, 5 backups)
-
----
-
-## 🎯 Interview Deliverables
-
-**✅ Completed:**
-1. Production-ready FastAPI application
-2. JWT authentication system
-3. Full CRUD operations
-4. **Role-based access control (Admin dashboard)**
-5. **Admin user management endpoints**
-6. Async PostgreSQL integration
-7. Comprehensive documentation
-8. Database test utilities (including admin tests)
-9. Docker containerization
-10. Environment configuration
-11. Logging and error handling
-12. API versioning strategy
-13. Realistic test data seeder
-
-**📦 Deliverables:**
-- Source code with clean architecture
-- Complete README with setup instructions
-- API documentation (Swagger/ReDoc)
-- Database connection test scripts
-- Environment configuration examples
-- Docker and Docker Compose setup
-- Mermaid diagrams (architecture, flows, schema)
-
-**🚀 Deployment Ready:**
-- Railway / Render / Heroku compatible
-- Docker deployment ready
-- Environment-based configuration
-- Production security settings
-- Comprehensive logging
-- Health check endpoints
-
----
-
-**Built with ❤️ using FastAPI, PostgreSQL, and modern Python best practices**
-
-**Interview Exercise for MindAbs - Founding Backend Engineer Position**
-
-**Completed by: Manoj Kumar Karumanchi | April 2024**
