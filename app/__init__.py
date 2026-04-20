@@ -14,34 +14,50 @@ from app.routes import v1_router
 async def lifespan(app: FastAPI):
     """Application lifespan events."""
     import os
+    print("[STARTUP] Lifespan starting...")
+
     # Startup
-    setup_logging()
-    await init_db()
+    try:
+        print("[STARTUP] Setting up logging...")
+        setup_logging()
 
-    # Optional: seed database on first deploy (only if empty)
-    if os.getenv("SEED_DATABASE", "false").lower() == "true":
-        from seed_database import seed_admin, seed_users, seed_items
-        from app.db import SessionLocal
-        from app.db.models import User
-        from sqlalchemy import select
+        print("[STARTUP] Initializing database...")
+        await init_db()
+        print("[STARTUP] Database initialized")
 
-        async with SessionLocal() as db:
-            try:
-                # Check if DB already has data
-                result = await db.execute(select(User).limit(1))
-                if result.scalar_one_or_none():
-                    print("[INFO] Database already seeded, skipping")
-                else:
-                    await seed_admin(db)
-                    await seed_users(db, 6)
-                    await seed_items(db, 6)
-                    print("[INFO] Database seeded successfully")
-            except Exception as e:
-                print(f"[ERROR] Seeding failed: {e}")
-                await db.rollback()
+        # Optional: seed database on first deploy (only if empty)
+        if os.getenv("SEED_DATABASE", "false").lower() == "true":
+            print("[STARTUP] Checking if seeding needed...")
+            from seed_database import seed_admin, seed_users, seed_items
+            from app.db import SessionLocal
+            from app.db.models import User
+            from sqlalchemy import select
+
+            async with SessionLocal() as db:
+                try:
+                    # Check if DB already has data
+                    result = await db.execute(select(User).limit(1))
+                    if result.scalar_one_or_none():
+                        print("[INFO] Database already seeded, skipping")
+                    else:
+                        await seed_admin(db)
+                        await seed_users(db, 6)
+                        await seed_items(db, 6)
+                        print("[INFO] Database seeded successfully")
+                except Exception as e:
+                    print(f"[ERROR] Seeding failed: {e}")
+                    await db.rollback()
+
+        print("[STARTUP] Lifespan ready, app can accept requests")
+    except Exception as e:
+        print(f"[STARTUP ERROR] {e}")
+        import traceback
+        traceback.print_exc()
+        raise
 
     yield
     # Shutdown (cleanup if needed)
+    print("[SHUTDOWN] App shutting down")
 
 
 # Create FastAPI app
@@ -60,6 +76,14 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Request logging middleware for debugging
+@app.middleware("http")
+async def log_requests(request, call_next):
+    print(f"[REQUEST] {request.method} {request.url.path}")
+    response = await call_next(request)
+    print(f"[RESPONSE] {response.status_code}")
+    return response
 
 # Include routers
 app.include_router(v1_router)

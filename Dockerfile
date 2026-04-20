@@ -55,6 +55,6 @@ EXPOSE 8000
 # HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
 #     CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8000/health').read()" || exit 1
 
-# Run application with multiple workers for production
+# Run application with single worker for debugging (change to --workers 4 after fixing)
 # Use shell form to allow $PORT environment variable expansion
-CMD uvicorn app:app --host 0.0.0.0 --port ${PORT:-8000} --workers 4
+CMD uvicorn app:app --host 0.0.0.0 --port ${PORT:-8000} --log-level debug
