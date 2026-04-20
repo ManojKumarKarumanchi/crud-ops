@@ -51,8 +51,8 @@ ENV PATH=/home/appuser/.local/bin:$PATH
 # Unbuffered Python output for better logging
 ENV PYTHONUNBUFFERED=1
 
-# Expose port
-EXPOSE 8000
+# Expose port (Railway auto-detects, this is just documentation)
+EXPOSE 8080
 
 # Healthcheck - disabled for Railway (Railway has its own health checks)
 # HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
