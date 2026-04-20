@@ -13,9 +13,33 @@ from app.routes import v1_router
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Application lifespan events."""
+    import os
     # Startup
     setup_logging()
     await init_db()
+
+    # Optional: seed database on first deploy (only if empty)
+    if os.getenv("SEED_DATABASE", "false").lower() == "true":
+        from seed_database import seed_admin, seed_users, seed_items
+        from app.db import SessionLocal
+        from app.db.models import User
+        from sqlalchemy import select
+
+        async with SessionLocal() as db:
+            try:
+                # Check if DB already has data
+                result = await db.execute(select(User).limit(1))
+                if result.scalar_one_or_none():
+                    print("[INFO] Database already seeded, skipping")
+                else:
+                    await seed_admin(db)
+                    await seed_users(db, 6)
+                    await seed_items(db, 6)
+                    print("[INFO] Database seeded successfully")
+            except Exception as e:
+                print(f"[ERROR] Seeding failed: {e}")
+                await db.rollback()
+
     yield
     # Shutdown (cleanup if needed)
 
