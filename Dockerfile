@@ -6,9 +6,11 @@ FROM python:3.12-slim as builder
 
 WORKDIR /app
 
-# Install build dependencies
+# Install build dependencies (needed for cryptography, bcrypt compilation)
 RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
+    libffi-dev \
+    libssl-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Python dependencies
