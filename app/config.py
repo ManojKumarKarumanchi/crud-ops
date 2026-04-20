@@ -60,6 +60,10 @@ class Settings(BaseSettings):
         default=False,
         description="Debug mode (NEVER True in production)"
     )
+    seed_database: bool = Field(
+        default=False,
+        description="Seed database with test data on startup (only if DB empty)"
+    )
 
     class Config:
         """Pydantic Settings configuration."""

@@ -48,6 +48,9 @@ USER appuser
 # Make sure scripts in .local are usable
 ENV PATH=/home/appuser/.local/bin:$PATH
 
+# Unbuffered Python output for better logging
+ENV PYTHONUNBUFFERED=1
+
 # Expose port
 EXPOSE 8000
 

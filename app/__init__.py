@@ -26,7 +26,7 @@ async def lifespan(app: FastAPI):
         print("[STARTUP] Database initialized")
 
         # Optional: seed database on first deploy (only if empty)
-        if os.getenv("SEED_DATABASE", "false").lower() == "true":
+        if settings.seed_database:
             print("[STARTUP] Checking if seeding needed...")
             from seed_database import seed_admin, seed_users, seed_items
             from app.db import SessionLocal
