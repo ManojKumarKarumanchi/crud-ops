@@ -5,7 +5,7 @@ Pydantic Settings automatically handles os.getenv() internally.
 """
 
 from pydantic_settings import BaseSettings
-from pydantic import Field
+from pydantic import Field, field_validator
 
 
 class Settings(BaseSettings):
@@ -21,6 +21,15 @@ class Settings(BaseSettings):
         ...,  # Required field, no default
         description="PostgreSQL database URL with asyncpg driver"
     )
+
+    @field_validator('database_url')
+    @classmethod
+    def transform_database_url(cls, v: str) -> str:
+        """Transform DATABASE_URL to use asyncpg driver if needed."""
+        if v.startswith('postgresql://'):
+            # Railway provides postgresql://, but we need postgresql+asyncpg://
+            return v.replace('postgresql://', 'postgresql+asyncpg://', 1)
+        return v
 
     # JWT Authentication - REQUIRED in .env
     secret_key: str = Field(
