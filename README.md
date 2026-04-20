@@ -262,8 +262,8 @@ sequenceDiagram
 ### Step 1: Clone Repository
 
 ```bash
-git clone <repository-url>
-cd crud
+git clone https://github.com/ManojKumarKarumanchi/crud-ops
+cd crud-ops
 ```
 
 ### Step 2: Set Up Python Environment
